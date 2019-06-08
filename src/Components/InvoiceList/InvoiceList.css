@@ -1,0 +1,92 @@
+.invoiceFormRow8 thead td input {
+    width: 100%;
+    margin: 0;
+}
+
+.invoiceFormRow8 table th , .invoiceFormRow8 table tr, .invoiceFormRow8 table, .invoiceFormRow8 table td  {
+    border-left: 1.5px solid #ada9a9;
+    border-right: 1.5px solid #ada9a9;
+    border-top: none;
+    border-bottom: none;
+    border-collapse: collapse;
+}
+
+.invoiceFormRow8 table, .invoiceFormRow8 table tfoot tr{
+    border-top: 1.5px solid #ada9a9;
+    border-bottom: 1.5px solid #ada9a9;
+}
+
+.invoiceFormRow8 table tfoot tr td {
+    padding: 0;
+}
+.invoiceFormRow8 table tfoot tr input{
+    background: #dcdcdc;
+    font-weight: bold;
+    font-size: 12px;
+}
+
+.invoiceFormRow8 table tfoot tr:last-child input{
+    background: #b1b1b1;
+}
+
+.tab-col-1{
+    width: 50px;
+    padding : 0;
+}
+
+.tab-col-2{
+    width: 330px;
+    padding : 0;
+}
+
+.tab-col-3{
+    width: 120px;
+    padding : 0;
+}
+
+.tab-col-4{
+    width: 120px;
+    padding : 0;
+}
+
+.tab-col-5{
+    width: 120px;
+    padding : 0;
+}
+
+.tab-col-5 .inp-col{
+    font-weight: bold;
+}
+
+.not-allowed{
+    cursor: not-allowed;
+}
+
+.not-allowed:disabled{
+    color: #000;
+}
+
+
+.inp-col, .inp-col-head{
+    width: 100%;
+    border: none;
+    outline: none;
+    text-indent: 10px;
+    background: none;
+    padding: 4px 0;
+    font-size: 12px;
+}
+
+.inp-col:focus, .inp-col-head:focus, tfoot input:focus {
+    background: -webkit-gradient(linear, left top, left bottom, from(rgba(255,255,100,0.5)), to(rgba(255,255,100,0.1)))!important;
+}
+
+.inp-col-head{
+    background: #b1b1b1;
+    text-transform: capitalize;
+    font-weight: bold;
+}
+
+tbody tr:nth-child(even){
+    background: #eaeaea;
+}
