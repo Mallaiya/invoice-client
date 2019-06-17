@@ -1,0 +1,49 @@
+.profile-content {
+    padding-top: 5px;
+    display: flex;
+    flex-wrap: nowrap;
+}
+
+.profile-content .imageUpload, .profile-content .setting-card{
+    margin: 10px;
+    background-color: #f1f1f1;
+    width: 50%;
+    height: auto;
+    box-shadow: 0 0 3px #ccc;
+}
+
+.user-setting{
+    margin: 10px;
+    background-color: #f1f1f1;
+    width: 900px;
+    height: 200px;
+    box-shadow: 0 0 3px #ccc;
+
+}
+
+.profile-content .imageUpload:hover, .profile-content .setting-card:hover{
+    box-shadow: 0 0 10px #aaa;
+}
+
+.Profile .table{
+    margin-bottom: 0px;
+}
+
+.Profile .table tr td{
+    padding: 10px 5px;
+}
+
+.Profile .table tr td:nth-child(1){
+    width: 150px;    
+}
+
+.Profile .table tr td:nth-child(2) {
+    float: right;
+}
+
+.user-logo{
+    width: 100px;
+    height: 100px;
+    float: right;
+    box-shadow: 0 0 2px #000;
+}

@@ -1,0 +1,58 @@
+.table-container{
+    padding: 10px;
+}
+
+.table-container #myInput{
+    float: right;
+    width: 250px;
+    margin: 10px 0;
+}
+.table-container table{
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 14px;
+}
+
+.table-container .table th{
+    padding: 10px 5px !important;
+    background: #ccc;
+}
+
+.table-container .table td{
+    padding: 5px!important;
+}
+
+.table-container .table tbody tr:nth-child(even){
+    background: none;
+}
+
+.delete{
+    color: #f00;
+    cursor: pointer;
+}
+
+.view {
+    cursor: pointer;
+    color: #00f;
+}
+
+.download {
+    cursor: pointer;
+    color: #0f0;
+}
+
+.print{
+    cursor: pointer;
+}
+
+.modal-content{
+    width: 900px;
+    position: relative;
+    top: 0;
+    left: -180px;
+}
+
+.modal-dialog iframe{
+    width: 870px;
+    height: 70vh;
+    
+}

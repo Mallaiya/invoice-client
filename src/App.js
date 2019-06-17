@@ -1,67 +1,46 @@
 import React, {Component} from 'react';
+import {BrowserRouter as Router, Route, Redirect, Switch} from 'react-router-dom';
 import './App.css';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import Dashboard from './Components/Dashboard/Dashboard'
+import Login from './Components/Login/Login';
+import Signup from './Components/Signup/Signup';
 
-import Invoice from './Components/Invoice/Invoice'
 
 class App extends Component {
-  
+
+
+
   state = {
-    companyName : 'Your Company Name',
-    invoiceName : 'invoice',
-    addressLine : ['123 Your Street','Your Town','Address Line 3'],
-    invoiceDate : '6-June-2019',
-    invoiceNumber : 'Invoice #2334889',
-    poNumber : 'PO 456001200',
-    phoneNumber : '(123) 456 789',
-    mailId : 'email@yourcompany.com',
-    clientName : 'Att: Ms. Jane Doe',
-    clientCompanyName : 'Client Company Name',
-    invoiceContent : 'Dear Ms. Jane Doe, \n\nPlease find below a cost-breakdown for the recent work completed. Please make payment at your earliest convenience, and do not hesitate to contact me with any questions\n\nMany thanks,\nYour Name',
-    invoiceGreetingContent : 'Many thanks for your custom! I look forward to doing business with you again in due course.\n\nPayment terms: to be received within 60 days.'
+    loginState : false
+  } 
+
+  updateLoginStateHandler = () => {
+    console.log(!this.state.loginState);
+    this.setState({
+      loginState : !this.state.loginState
+    }) 
+    return this.state.loginState;
   }
 
-
-    setAddressLine = (addressLineRef)=> {
-      this.setState({
-        addressLine : addressLineRef
-      });
-    }
-
-    OnChangeEventHandler = (event) => {
-      let name = event.target.name;
-      let value = event.target.value;
-      console.log(name);
-
-      if(name.includes("addressLine")){
-        let addressLineRef = this.state.addressLine;
-        if(name.includes("1")){
-          addressLineRef[0] = value;
-          this.setAddressLine(addressLineRef);
-        }else if(name.includes("2")){
-          addressLineRef[1] = value;
-          this.setAddressLine(addressLineRef);
-        }else{
-          addressLineRef[2] = value;
-          this.setAddressLine(addressLineRef);
-        }
-        
-        console.log(this.state);
-      }else{
-        this.setState({
-          [name] : value
-        });
-        console.log(this.state);
-      }
-    }
-    
-  render () {
-    return (
+  render () { 
+       return (
+      <Router >
       <div className = "App">
-      <Invoice 
-        data = {this.state}
-        changeEventHandler = {this.OnChangeEventHandler.bind(this)}
-        />
+          <Switch >
+          <Route path = "/" exact  render = {() => <Redirect to ="/login" />}/>
+          <Route path = "/login" exact render = {() => <Login />} />
+          <Route path = "/signup" exact render = {()=> <Signup/>}/>
+          <Route  path = "/dashboard" exact render = {() => <Dashboard />} />
+          <Route  path = "/dashboard/profile" exact render = {() => <Dashboard />} />
+          <Route  path = "/dashboard/create" exact render = {() => <Dashboard />} />
+          <Route  path = "/dashboard/personal" exact render = {() => <Dashboard />} />
+          <Route  path = "/dashboard/company" exact render = {() => <Dashboard />} />
+          </Switch>
+        <ToastContainer />
       </div>
+      </Router>
     );
   }
 }

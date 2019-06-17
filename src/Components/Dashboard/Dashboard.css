@@ -1,0 +1,73 @@
+.sideNav{
+  background: #0e0e0d;
+  height: 100vh;
+  width: 250px;
+  position: fixed;
+  overflow-y : scroll; 
+}
+
+
+.headerLogo img{
+  width: 50%;
+  display: block;
+  margin: 0 auto;  
+  padding: 15px 0 0 0;
+}
+
+hr.logoBreak{
+  background: #333;
+}
+
+.menuItem ul, .logout ul {
+  padding: 0;
+  width : 100%;
+  margin: 0 auto;
+  
+}
+
+.listItem{
+  list-style: none;
+  font-size: 14px;
+  padding: 10px 20px;
+  cursor: pointer;
+}
+
+.menuItem a{
+  color: #aaa;
+  text-decoration: none;
+}
+
+.menuItem a:hover{
+  color: #fff;
+}
+
+.menuItem .badge {
+  float: right;
+  padding: 5px;
+}
+
+.menuItem .badge-secondary {
+  background: #f00!important;
+}
+
+.logout {
+  padding: 0;
+  width : 100%;
+  margin: 0 auto; 
+  position: absolute;
+  bottom: 10px;
+}
+
+.logout .listItem {
+  color: #aaa;
+  text-decoration: none;  
+}
+
+.logout .listItem:hover {
+  color: #fff;
+}
+
+.content{
+  margin-left: 250px;
+}
+

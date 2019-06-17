@@ -1,0 +1,30 @@
+.imageUpload form{
+    padding: 10px 5%;    
+}
+
+.custom-file{
+    margin: 0 auto;
+    display: inline-block;
+}
+
+.imageUpload .btn-custom {
+    background: #f36331!important;
+    width: 80px;
+    text-align: center;
+    float: right;
+    margin: 10px 0;
+}
+
+
+.imagePreview {
+    text-align: center;
+    width: 300px;
+    margin: 20px auto 0 auto!important;
+}
+
+.imagePreview img{
+    text-align: center;
+    margin: 40px 0 0 0;
+    width: 150px;
+    height: 150px;
+}

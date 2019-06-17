@@ -82,7 +82,7 @@ class InvoiceList extends Component {
     changeEventHandler = (event) => {
         let name = event.target.name;
         let value = event.target.value;
-        console.log(name, value)
+        // console.log(name, value)
         this.setState({
             [name] : value
         });
@@ -94,7 +94,7 @@ class InvoiceList extends Component {
                 console.log(indexOfFirst);
                 console.log(indexOfLast);
                 let salesTaxData = value.substring(indexOfFirst+1, indexOfLast);
-                if(!isNaN(salesTaxData) && (salesTaxData>=0&&salesTaxData<=100)){
+                if(!isNaN(salesTaxData)){
                     salexTaxAmount = (salesTaxData / 100) * this.state.subTotalValue;
 
                     console.log(salexTaxAmount);
@@ -157,7 +157,7 @@ class InvoiceList extends Component {
             console.log(indexOfLast);
             let salesTaxData = salexTaxRef.substring(indexOfFirst+1, indexOfLast);
             console.log(salesTaxData);
-            if(!isNaN(salesTaxData) && (salesTaxData>=0&&salesTaxData<=100)){
+            if(!isNaN(salesTaxData)){
                 salexTaxAmount = (salesTaxData / 100) * subTotal;
                this.setState({
                    salesTaxValue : salexTaxAmount.toFixed(2)
@@ -188,7 +188,7 @@ class InvoiceList extends Component {
                                             <input type ="text" className = "inp-col-head" name = "slNo" value = {this.state.slNo} onChange = {this.changeEventHandler.bind(this)} />
                                         </th>
                                         <th className="tab-col-2">
-                                            <input type ="text" className = "inp-col-head" name = "description" name = "invoiceDataItem[index].slNo"value = {this.state.description} onChange = {this.changeEventHandler.bind(this)} />    
+                                            <input type ="text" className = "inp-col-head" name = "description" value = {this.state.description} onChange = {this.changeEventHandler.bind(this)} />    
                                         </th>
                                         <th className = "tab-col-3" >
                                             <input type ="text" className = "inp-col-head" name = "quantity" value = {this.state.quantity} onChange = {this.changeEventHandler.bind(this)} />

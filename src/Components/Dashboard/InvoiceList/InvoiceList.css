@@ -4,16 +4,16 @@
 }
 
 .invoiceFormRow8 table th , .invoiceFormRow8 table tr, .invoiceFormRow8 table, .invoiceFormRow8 table td  {
-    border-left: 1.5px solid #ada9a9;
-    border-right: 1.5px solid #ada9a9;
+    border-left: 1px solid #ada9a9;
+    border-right: 1px solid #ada9a9;
     border-top: none;
     border-bottom: none;
     border-collapse: collapse;
 }
 
 .invoiceFormRow8 table, .invoiceFormRow8 table tfoot tr{
-    border-top: 1.5px solid #ada9a9;
-    border-bottom: 1.5px solid #ada9a9;
+    border-top: 1px solid #ada9a9;
+    border-bottom: 1px solid #ada9a9;
 }
 
 .invoiceFormRow8 table tfoot tr td {
