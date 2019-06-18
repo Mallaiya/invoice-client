@@ -141,6 +141,8 @@ class PersonalList extends Component {
 
     // }
 
+    //verify
+
     render () {      
         return (
             <div>
