@@ -65,9 +65,17 @@ class Invoice extends Component {
     
     generatePDF = () => {
         // console.log(this.props.data);
-        console.log(this.child.state)
+        // this.setState({
+        //     list : this.child.state,
+        //     propsData : this.props.data
+        // });
+
+        let dataObj = Object.assign(this.props.data, this.child.state);
+        console.log(dataObj);
+        console.log(this.state);
         if(this.state.invoiceName !== ""){
-            axios.post('/users/create-pdf', this.props.data)
+            console.log(this.state);
+            axios.post('/users/create-pdf', dataObj)
         .then(() => axios.get('/users/fetch-pdf', {responseType : 'blob'}))
         .then((res) => {
             console.log(res);

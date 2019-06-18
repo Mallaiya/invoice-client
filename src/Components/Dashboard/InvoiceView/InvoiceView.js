@@ -8,7 +8,7 @@ import Doc from '../DocService';
 class InvoiceView extends Component {
     state = {
         companyName : 'Your Company Name',
-        invoiceName : 'invoice',
+        invoiceName : 'INVOICE',
         addressLine : ['123 Your Street','Your Town','Address Line 3'],
         invoiceDate : '6-June-2019',
         invoiceNumber : 'Invoice #2334889',
@@ -17,7 +17,7 @@ class InvoiceView extends Component {
         mailId : 'email@yourcompany.com',
         clientName : 'Att: Ms. Jane Doe',
         clientCompanyName : 'Client Company Name',
-        invoiceContent : 'Dear Ms. Jane Doe, \n\nPlease find below a cost-breakdown for the recent work completed. Please make payment at your earliest convenience, and do not hesitate to contact me with any questions\n\nMany thanks,\nYour Name',
+        invoiceContent : 'Dear Ms. Jane Doe,\nPlease find below a cost-breakdown for the recent work completed. Please make payment at your earliest convenience, and do not hesitate to contact me with any questions\n\nMany thanks,\nYour Name',
         invoiceGreetingContent : 'Many thanks for your custom! I look forward to doing business with you again in due course.\n\nPayment terms: to be received within 60 days.'
       }
       
