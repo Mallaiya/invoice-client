@@ -22,7 +22,11 @@ class PersonalList extends Component {
         emailId : '',
         isData : false,
         data : [],
-        pdfSrc : ''
+        pdfSrc : '',
+        invoiceName : '',
+        receiversMailId : '',
+        mailSubject : '',
+        mailContent : ''
     }
 
     componentDidMount = () => {
@@ -95,6 +99,12 @@ class PersonalList extends Component {
         })
     }    
 
+    invoiceHandler = (invoiceName) => {
+
+        this.setState({
+            invoiceName : invoiceName
+        })
+    }
 
     printHandler = (pdfSrc) => {
         this.setState({
@@ -105,8 +115,22 @@ class PersonalList extends Component {
         objFra.contentWindow.print();
     }   
     
-    test = () => {
-        
+    mailHandler = (event) => {
+        this.setState({
+            [event.target.name] : event.target.value
+        })
+    }
+
+    sendMail = () => {
+        console.log(this.state);
+        axios.post('/users/send-mail', {
+            receiversMailId : this.state.receiversMailId,
+            mailSubject : this.state.mailSubject,
+            mailContent : this.state.mailContent,
+            invoiceName : this.state.invoiceName
+        }).then(res => {
+            console.log(res);
+        })
     }
 
     // generatePDF = (pdfSrc) => { 
@@ -131,7 +155,7 @@ class PersonalList extends Component {
                         <th>Date Time</th>
                         <th>View / Print</th>
                         <th>Download</th>
-                        {/* <th>Print</th> */}
+                        <th>Send Mail</th>
                         <th>Delete</th>
                     </tr>
                     </thead>
@@ -147,8 +171,9 @@ class PersonalList extends Component {
                                         <td>{data.createdTime}</td>
                                         <td><a href = {data.pdfSrc} data-toggle="modal" data-target="#myModal" className = "view" onClick = {() => this.pdfHandler(data.pdfSrc)}>View / Print</a></td>
                                         <td><a href = {data.pdfSrc} className = "download" download>Download</a></td>
-                                        {/* <td><span className = "print" onClick = {() => this.printHandler(data.pdfSrc)}>Print</span></td> */}
+                                        <td><span className = "" data-toggle="modal" data-target="#mailModal" className = "view" onClick = {() => this.invoiceHandler(data.invoiceName)}>Send Mail</span></td>
                                         <td><span className = "delete" onClick = {(event) => this.deleteHandler(data._id)}>Delete</span></td>
+                                        {/* onClick = {() => this.mailHandler(data.invoiceName)} */}
                                     </tr>
                                 )
                             }) : 
@@ -167,6 +192,36 @@ class PersonalList extends Component {
                         </div>
                         <div className="modal-body">
                             <iframe src = {this.state.pdfSrc}></iframe>
+                        </div>
+                    </div>  
+                    </div>
+                </div>
+                <div className="modal fade" id="mailModal" role="dialog">
+                    <div className="modal-dialog">
+                    <div className="modal-content">
+                        <div className="modal-header">
+                        <button type="button" className="close" data-dismiss="modal">&times;</button>
+                        </div>
+                        <div className="modal-body mail">
+                            <div className="form-group row">
+                                <label className ="col-sm-2 col-form-label">To</label>
+                                <div className="col-sm-10">
+                                    <input type="text" className="form-control" placeholder = "Receiver Mail" name = "receiversMailId" onChange = {this.mailHandler.bind(this)}/>
+                                </div>
+                                </div>
+                            <div className="form-group row">
+                                <label  className="col-sm-2 col-form-label">Subject</label>
+                                <div className="col-sm-10">
+                                    <input type="text" className="form-control" placeholder="Subject" name = "mailSubject" onChange = {this.mailHandler.bind(this)}/>
+                                </div>
+                            </div>
+                            <div className="form-group row">
+                                <label  className="col-sm-2 col-form-label">Content</label>
+                                <div className="col-sm-10">
+                                    <textarea className="form-control" rows="5" id="comment" name="text" name = "mailContent" onChange = {this.mailHandler.bind(this)}></textarea>
+                                </div>
+                            </div>
+                            <button type="button" className="btn btn-success" onClick = {this.sendMail.bind(this)}>Send</button>
                         </div>
                     </div>  
                     </div>
