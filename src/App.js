@@ -37,6 +37,7 @@ class App extends Component {
           <Route  path = "/dashboard/create" exact render = {() => <Dashboard />} />
           <Route  path = "/dashboard/personal" exact render = {() => <Dashboard />} />
           <Route  path = "/dashboard/company" exact render = {() => <Dashboard />} />
+          <Route  path = "/dashboard/action" exact render = {() => <Dashboard />} />
           </Switch>
         <ToastContainer />
       </div>

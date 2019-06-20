@@ -1,9 +1,9 @@
 import React, {Component} from 'react';
 
 import Invoice from '../Invoice/Invoice';
-import htmlcanvas from 'html2canvas';
-import PdfContainer from '../PdfContainer';
-import Doc from '../DocService';
+// import htmlcanvas from 'html2canvas';
+// import PdfContainer from '../PdfContainer';
+// import Doc from '../DocService';
 
 class InvoiceView extends Component {
     state = {

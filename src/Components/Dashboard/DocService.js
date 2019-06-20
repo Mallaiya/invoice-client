@@ -1,7 +1,7 @@
 import { savePDF } from '@progress/kendo-react-pdf';
-import { encodeBase64, saveAs } from '@progress/kendo-file-saver';
-import FileSaver from 'file-saver'
-import Axios from 'axios';
+// import { encodeBase64, saveAs } from '@progress/kendo-file-saver';
+// import FileSaver from 'file-saver'
+// import Axios from 'axios';
 class DocService {
  
 

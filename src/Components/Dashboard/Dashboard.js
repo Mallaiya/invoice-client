@@ -8,6 +8,7 @@ import './Dashboard.css';
 import dashLogo from '../images/dashLogo.png'
 import PersonalList from './PersonalList/PersonalList';
 import CompanyList from './CompanyList/CompanyList';
+import Action from './Action/Action';
 class Dashboard extends Component {  
     
     state = {
@@ -74,6 +75,14 @@ class Dashboard extends Component {
                           </NavLink> :
                           null
                         }
+                        {this.state.designation === "CEO" || this.state.designation === "CTO" ? 
+                          <NavLink to = "/dashboard/action">
+                          <li className = "listItem">
+                            Invoice Action
+                          </li>
+                          </NavLink> :
+                          null
+                        }
                       </ul>
                     </div>
                     <div className = "logout">
@@ -88,8 +97,9 @@ class Dashboard extends Component {
                   {/* <Redirect  strict from = "/dashboard/" to = "/dashboard/profile" /> */}
                   <Route exact path = "/dashboard" render = {() => <Profile />} />
                   <Route exact path = "/dashboard/create" render = {() => <InvoiceView />} />
-                  <Route exact path = "/dashboard/personal" render = {() => <PersonalList len = {this.props.data}/>} />
+                  <Route exact path = "/dashboard/personal" render = {() => <PersonalList />} />
                   <Route exact path = "/dashboard/company" render = {() => <CompanyList />} />
+                  <Route exact path = "/dashboard/action" render = {() => <Action />} />
                 </div>
             </div>
             </Router>

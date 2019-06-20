@@ -47,7 +47,7 @@
 
 .invoiceWidgetRow2{
     position: relative;
-    top: 100px;
+    top: 120px;
 }
 
 .invoiceWidgetRow2 button{
@@ -59,12 +59,14 @@
     cursor: pointer;
     font-size: 14px;
     font-weight: 600;  
-    outline: none;                                                                                                                         
+    outline: none; 
+    display: block;
+    margin: 10px;                                                                                                                        
 }
 
 .invoiceWidgetRow3{
     position: relative;
-    top: 290px;
+    top: 220px;
 }
 
 .invoiceWidgetRow3 .addRow, .invoiceWidgetRow3 .deleteRow{

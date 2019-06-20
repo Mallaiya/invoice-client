@@ -120,7 +120,7 @@ class ImageUploads extends Component {
                         <input type = "submit" value ="upload" className = "btn btn-custom"/>
                     </div>
                     <div className ="imagePreview">
-                    <img src = {this.state.imagePreviewUrl === '' ? defaultProfile : this.state.imagePreviewUrl}/>
+                    <img src = {this.state.imagePreviewUrl === '' ? defaultProfile : this.state.imagePreviewUrl} alt="Preview"/>
                     <p>Preview</p>
                 </div>
                      </form>
