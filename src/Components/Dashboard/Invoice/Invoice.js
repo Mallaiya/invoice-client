@@ -30,7 +30,6 @@ class Invoice extends Component {
     }
 
     componentDidMount = () => {
-        
         const token = localStorage.userToken;
       if(token !== undefined && token !== null){
         const decoded = jwt_decode(token);
@@ -70,7 +69,7 @@ class Invoice extends Component {
         //     propsData : this.props.data
         // });
 
-        let dataObj = Object.assign(this.props.data, this.child.state);
+        let dataObj = Object.assign(this.props.data, this.child.state); 
         console.log(dataObj);
         console.log(this.state);
         if(this.state.invoiceName !== ""){

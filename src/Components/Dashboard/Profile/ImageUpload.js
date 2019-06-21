@@ -105,6 +105,10 @@ class ImageUploads extends Component {
                     })
                 }   
             }
+        }else{
+            toast.error("Image should not be empty", {
+                position: toast.POSITION.TOP_LEFT
+            });
         }
         this.props.updatePhoto();      
     }

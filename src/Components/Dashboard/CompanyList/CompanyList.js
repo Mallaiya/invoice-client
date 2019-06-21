@@ -280,7 +280,7 @@ class CompanyList extends Component {
                                         <td>{data.userName}</td>
                                         <td>{data.emailId}</td>
                                         <td><a href = {data.pdfSrc} data-toggle="modal" data-target="#myModal" className = "view" onClick = {() => this.pdfHandler(data.pdfSrc)}>View</a></td>
-                                        <td><span className = "view" onClick = {() => this.printHandler(data.pdfSrc)}>Print</span></td>
+                                        <td><span className = "view" data-toggle="modal" data-target="#printModal" onClick = {() => this.printHandler(data.pdfSrc)}>Print</span></td>
                                         <td><span className = "download" data-toggle="modal" data-target="#downloadModal" onClick = {() => this.invoiceHandler(data.invoiceName, data.pdfSrc)}>Download</span></td>
                                         <td><span className = "view" data-toggle="modal" data-target="#mailModal" onClick = {() => this.invoiceHandler(data.invoiceName, data.pdfSrc)}>Send Mail</span></td>
                                         <td><span className = "delete" onClick = {(event) => this.deleteHandler(data._id)}>Delete</span></td>

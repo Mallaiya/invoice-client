@@ -69,3 +69,14 @@
 	padding: 8px 16px;
 }
 
+button.print{
+    margin: 10px 0;
+}
+
+.hide-print{
+    display: none;
+}
+
+.show-print{
+    display: block;
+}

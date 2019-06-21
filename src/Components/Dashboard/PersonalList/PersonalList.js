@@ -5,6 +5,10 @@ import axios from 'axios';
 import {toast} from 'react-toastify';
 
 import jwt_decode from 'jwt-decode';
+import Iframe from 'react-iframe'
+
+
+
 // import DownloadLink from "react-download-link";
 // import { saveAs } from 'file-saver';
 
@@ -31,7 +35,8 @@ class PersonalList extends Component {
         mailSubject : '',
         mailContent : '',
         mailCc : '',
-        reason : ''
+        reason : '',
+        printDisplay : false
     }
 
     componentDidMount = () => {
@@ -116,11 +121,11 @@ class PersonalList extends Component {
         })
     }
 
-    printHandler = (pdfSrc) => {
-        this.setState({
-            pdfSrc : pdfSrc
-        })
-    }
+    // printHandler = (pdfSrc) => {
+    //     this.setState({
+    //         pdfSrc : pdfSrc
+    //     })
+    // }
     
     outHandler = () => {
 
@@ -188,8 +193,9 @@ class PersonalList extends Component {
     }
 
     saveActions = (type) => {
-        console.log(this.state.pdfSrc);
+        console.log(this.state);
         if(this.state.reason !== ""){
+
             if(type === "mail"){
                 axios.post('/users/save-actions',{
                     emailId : this.state.emailId,
@@ -238,6 +244,33 @@ class PersonalList extends Component {
                     this.setState({
                         reason : ''
                     })
+                })
+            }else if(type === "print"){
+                this.setState({
+                    printDisplay : true
+                })        
+                axios.post('/users/save-actions',{
+                    emailId : this.state.emailId,
+                    userName : this.state.userName,
+                    companyName : this.state.companyName,
+                    pdfSrc : this.state.pdfSrc,
+                    invoiceName : this.state.invoiceName,
+                    reason : this.state.reason,
+                    type : type
+                }).then(res => {
+                    console.log(res);
+                    if(res.data === "success"){
+                        toast.success("Actions saved successfully", {
+                            position: toast.POSITION.TOP_LEFT
+                        });    
+                    }else{
+                        toast.error("OOPS!!! Action problem, retry", {
+                            position: toast.POSITION.TOP_LEFT
+                        });    
+                    }  
+                })
+                this.setState({
+                    printDisplay : true
                 })
             }
         }else{
@@ -288,7 +321,7 @@ class PersonalList extends Component {
                                         <td>{data.createdDate}</td>
                                         <td>{data.createdTime}</td>
                                         <td><a href = {data.pdfSrc} data-toggle="modal" data-target="#myModal" className = "view" onClick = {() => this.pdfHandler(data.pdfSrc)}>View</a></td>
-                                        <td><span className = "view" onClick = {() => this.printHandler(data.pdfSrc)}>Print</span></td>
+                                        <td><span className = "view" data-toggle="modal" data-target="#printModal" onClick = {() => this.invoiceHandler(data.invoiceName, data.pdfSrc)}>Print</span></td>
                                         {/* <td><span className = "view" onClick = {() => this.outHandler(data.pdfSrc)}>Print</span></td> */}
                                         <td><span className = "download" data-toggle="modal" data-target="#downloadModal" onClick = {() => this.invoiceHandler(data.invoiceName, data.pdfSrc)}>Download</span></td>
                                         <td><span className = "view" data-toggle="modal" data-target="#mailModal" onClick = {() => this.invoiceHandler(data.invoiceName, data.pdfSrc)}>Send Mail</span></td>
@@ -328,9 +361,34 @@ class PersonalList extends Component {
                                 <div className="col-sm-10">
                                     <textarea className="form-control" rows="5" id="comment" name = "reason" value ={this.state.reason} onChange = {this.stateHandler.bind(this)}></textarea>
                                     <a href = {this.state.reason ==="" ?`javascript:void(0)`:this.state.pdfSrc} download  className = "btn download" onClick = {() => this.saveActions("download")}>Download</a>
-
                             </div>
                         </div>
+                        </div>
+                    </div>  
+                    </div>
+                </div>
+                <div className="modal fade" id="printModal" role="dialog">
+                    <div className="modal-dialog">
+                    <div className="modal-content">
+                        <div className="modal-header">
+                        <button type="button" className="close" data-dismiss="modal">&times;</button>
+                        </div>
+                        <div className = "modal-body">
+                        <div className="form-group row">
+                            <label  className="col-sm-2 col-form-label">Reason for printing</label>
+                                <div className="col-sm-10">
+                                    <textarea className="form-control" rows="5" id="comment" name = "reason" value ={this.state.reason} onChange = {this.stateHandler.bind(this)}></textarea>
+                                    <button className = "btn btn-primary print" onClick = {() => this.saveActions("print")}>Confirm</button>
+                            </div>
+                        </div>
+                            <div className = {this.state.printDisplay ? "show-print" : "hide-print"}>
+                                {/* <iframe id="targetPrint" src={this.state.pdfSrc} title="printContent" width="auto" height= "150px"></iframe> */}
+                                <Iframe url="http://localhost:3000/"
+                                    src = {this.state.pdfSrc}
+                                    width="450px"
+                                    height="450px"
+                                    id="targetPrint"/>
+                            </div>
                         </div>
                     </div>  
                     </div>
